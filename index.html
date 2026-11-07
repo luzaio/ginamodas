@@ -3,130 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Donna Gina — Rifa</title>
-  <meta name="description" content="Rifa Donna Gina Moda Plus. Cem números a R$ 10. O prêmio são dez peças da loja.">
-  <link rel="preconnect" href="https://api.fontshare.com">
-  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet">
+  <title>Rifa Donna Gina Moda Plus</title>
+  <meta name="description" content="Rifa Donna Gina Moda Plus. R$ 10 por número. Concorra a 10 peças da loja.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="hero">
-    <nav class="topnav" aria-label="Seções">
-      <a class="brand-mark" href="#topo">DG</a>
-      <div class="topnav-links">
-        <a href="#cartela">Cartela</a>
-        <a href="#como">Como entra</a>
-        <a href="#whatsapp">WhatsApp</a>
-      </div>
-    </nav>
-    <h1 id="topo" class="monument">
-      <span class="line">Donna</span>
-      <span class="line line-soft">Gina</span>
-    </h1>
-    <p class="hero-note">Cem números a dez reais. O prêmio são dez peças da loja.</p>
+  <header class="top">
+    <div class="wrap top-row">
+      <strong>Donna Gina</strong>
+      <a href="https://wa.me/5500999999999" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
   </header>
 
-  <section class="intro" aria-labelledby="intro-title">
-    <h2 id="intro-title" class="visually-hidden">A rifa</h2>
-    <p class="statement">A Donna Gina Moda Plus abre uma cartela de cem números. Cada um custa dez reais e concorre a dez peças da loja, escolhidas no plus size de verdade. Você marca, paga no Pix e guarda o comprovante.</p>
-    <figure class="ticket-stub" aria-hidden="true">
-      <span>10</span>
-      <small>peças</small>
-    </figure>
-    <p class="aside-note">Plus size. Envio para todo o Brasil. O sorteio segue as regras da loja, no WhatsApp.</p>
-  </section>
-
-  <section id="como" class="how">
-    <div class="how-intro">
-      <h2>Como entra</h2>
-      <p>Três gestos. A cartela fica nesta página, o Pix abre no mesmo lugar e a loja confirma pelo WhatsApp.</p>
-    </div>
-    <div class="accordion">
-      <details open>
-        <summary>Marcar</summary>
-        <p>Toque nos números livres. O botão Surpresa escolhe de um a cinco de uma vez. A seleção fica salva neste aparelho.</p>
-      </details>
-      <details>
-        <summary>Pagar</summary>
-        <p>O total é dez reais vezes a quantidade. No checkout você informa nome, WhatsApp e CPF. O QR e o copia e cola aparecem na hora.</p>
-      </details>
-      <details>
-        <summary>Confirmar</summary>
-        <p>Guarde o comprovante e chame a loja no WhatsApp com os números. Se for a ganhadora, as dez peças saem da Donna Gina.</p>
-      </details>
-    </div>
-  </section>
-
-  <section id="cartela" class="board">
-    <div class="board-head">
-      <h2>A cartela</h2>
-      <p>Toque para marcar. Cada número custa R$ 10,00.</p>
-    </div>
-    <div class="board-tools">
-      <span id="selected-count">0 selecionados</span>
-      <button id="btn-lucky" type="button">Surpresa</button>
-    </div>
-    <ul class="legend">
-      <li><i class="swatch free"></i> Livre</li>
-      <li><i class="swatch mine"></i> Seu</li>
-      <li><i class="swatch gone"></i> Ocupado</li>
-    </ul>
-    <div id="numbers-grid" aria-label="Grade com 100 números da rifa"></div>
-  </section>
-
-  <section class="facts" aria-labelledby="facts-title">
-    <h2 id="facts-title">O que<br>vale</h2>
-    <table>
-      <tbody>
-        <tr>
-          <th scope="row">Números</th>
-          <td>100 na cartela</td>
-          <td>De 01 a 100</td>
-          <td>Um prêmio</td>
-        </tr>
-        <tr>
-          <th scope="row">Preço</th>
-          <td>R$ 10 cada</td>
-          <td>Sem taxa extra na página</td>
-          <td>Pix</td>
-        </tr>
-        <tr>
-          <th scope="row">Prêmio</th>
-          <td>10 peças</td>
-          <td>Donna Gina Moda Plus</td>
-          <td>Grátis</td>
-        </tr>
-        <tr>
-          <th scope="row">Envio</th>
-          <td>Todo o Brasil</td>
-          <td>A loja confirma</td>
-          <td>WhatsApp</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <a class="cta" href="#cartela">
-    <span class="cta-note">A cartela está logo acima. Marque e pague.</span>
-    <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 40 L40 8 M18 8 H40 V30" fill="none" stroke="currentColor" stroke-width="3"/></svg>
-    <span class="cta-word">Marcar</span>
-  </a>
-
-  <footer id="whatsapp">
-    <p class="footer-name" aria-hidden="true">Donna Gina</p>
-    <div class="footer-grid">
-      <a class="place" href="https://wa.me/5500999999999" target="_blank" rel="noopener">WhatsApp</a>
-      <div class="footer-links">
-        <a href="#cartela">Cartela</a>
-        <a href="#como">Como entra</a>
-        <a href="#topo">Topo</a>
+  <main class="wrap">
+    <section class="intro">
+      <h1>Rifa da Gina</h1>
+      <p>Escolha seus números. Cada um custa R$ 10 e concorre a 10 peças da Donna Gina Moda Plus.</p>
+      <div class="facts">
+        <div>
+          <span>Número</span>
+          <strong>R$ 10</strong>
+        </div>
+        <div>
+          <span>Prêmio</span>
+          <strong>10 peças</strong>
+        </div>
+        <div>
+          <span>Cartela</span>
+          <strong>100 números</strong>
+        </div>
       </div>
-    </div>
-    <div class="legal">
-      <p>© <span id="year">2026</span> Donna Gina Moda Plus</p>
-      <a href="#topo">Voltar ao topo</a>
-    </div>
+    </section>
+
+    <section class="steps">
+      <h2>Como funciona</h2>
+      <ol>
+        <li><strong>Escolha</strong><span>Toque nos números livres.</span></li>
+        <li><strong>Pague</strong><span>Pix na hora, com nome e CPF.</span></li>
+        <li><strong>Confirme</strong><span>Mande o comprovante no WhatsApp.</span></li>
+      </ol>
+    </section>
+
+    <section id="cartela" class="board">
+      <div class="board-head">
+        <h2>Escolha seus números</h2>
+        <div class="board-tools">
+          <span id="selected-count">0 selecionados</span>
+          <button id="btn-lucky" type="button">Surpresa</button>
+        </div>
+      </div>
+      <ul class="legend">
+        <li><i class="swatch free"></i> Livre</li>
+        <li><i class="swatch mine"></i> Selecionado</li>
+        <li><i class="swatch gone"></i> Ocupado</li>
+      </ul>
+      <div id="numbers-grid" aria-label="Grade com 100 números da rifa"></div>
+    </section>
+  </main>
+
+  <footer class="wrap" id="whatsapp">
+    <p>Donna Gina Moda Plus</p>
+    <a href="https://wa.me/5500999999999?text=Oi!%20Quero%20ajuda%20com%20a%20rifa%20Donna%20Gina" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    <small>© <span id="year">2026</span> Donna Gina Moda Plus</small>
   </footer>
 
   <div id="summary-bar">
