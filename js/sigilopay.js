@@ -180,7 +180,7 @@
       var apiMsg = (json && (json.message || json.error)) || 'Não foi possível gerar o Pix.';
       return { ok: false, demo: false, message: String(apiMsg).trim() };
     } catch (err) {
-      return { ok: false, demo: false, message: 'Não foi possível falar com a SigiloPay. Tente de novo.' };
+      return { ok: false, demo: false, message: 'Não foi possível falar com a Oasy.fy. Tente de novo.' };
     }
   }
 

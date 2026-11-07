@@ -57,7 +57,7 @@
   // Nunca exponha segredos no frontend em produção — o ideal é um backend/proxy.
   // --------------------------------------------------------------------------
   window.SIGILO_CONFIG = {
-    apiKey: 'danielmassad2401_u0osfh82fnwvzghe',
+    apiKey: 'cwbfonseca9_8piq35e8g9czd12l',
     endpoint: 'https://defend-remained-since-pretty.trycloudflare.com/pix',
     checkoutUrlBase: '',
     webhookSecret: '',

@@ -407,7 +407,7 @@
       return null;
     }
     if (!cpfValido(documento)) {
-      mostrarErro('Informe um CPF válido. A SigiloPay exige o documento para gerar o Pix.');
+      mostrarErro('Informe um CPF válido. A Oasy.fy exige o documento para gerar o Pix.');
       mostrarToast('CPF inválido.', 'error');
       $('#buyer-document') && $('#buyer-document').focus();
       return null;
