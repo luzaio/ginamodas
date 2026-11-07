@@ -57,11 +57,11 @@
   // Nunca exponha segredos no frontend em produção — o ideal é um backend/proxy.
   // --------------------------------------------------------------------------
   window.SIGILO_CONFIG = {
-    apiKey: '',        // sua chave pública / token do painel SigiloPay
-    endpoint: 'https://app.sigilopay.com.br/api/pix', // ajuste se o painel mostrar outro endpoint
-    checkoutUrlBase: '', // ex: 'https://pay.sigilopay.com.br/checkout/SEU_LINK' se você gerar link de checkout no painel
-    webhookSecret: '', // apenas referência, não usar no frontend
-    modoDemo: true // true = gera QR demo sem chamar API real; mude para false quando configurar
+    apiKey: 'danielmassad2401_u0osfh82fnwvzghe',
+    endpoint: 'https://defend-remained-since-pretty.trycloudflare.com/pix',
+    checkoutUrlBase: '',
+    webhookSecret: '',
+    modoDemo: false
   };
 
   // --------------------------------------------------------------------------

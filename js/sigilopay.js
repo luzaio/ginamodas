@@ -125,32 +125,37 @@
     // Modo demo ou sem chave: resposta fictícia, sem chamar o gateway.
     if (isDemo(cfg)) return demoResponse(p);
 
-    var externalId = 'rifa-donna-gina-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
+    var buyer = p.buyer || {};
+    var phone = String(buyer.phone || buyer.telefone || '').replace(/\D/g, '');
+    var email = String(buyer.email || '').trim();
+    if (!email) email = phone + '@clientes.ginamodas.com.br';
+    var document = String(buyer.document || buyer.documento || buyer.cpf || '').replace(/\D/g, '');
+    var externalId = 'rifa-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
     var body = {
-      amount_in_cents: cents(amount),
+      identifier: externalId,
       amount: amount,
-      currency: 'BRL',
-      description: p.description || 'Rifa Donna Gina Moda Plus',
-      payer: {
-        name: (p.buyer && p.buyer.name) || '',
-        email: (p.buyer && p.buyer.email) || '',
-        phone: (p.buyer && p.buyer.phone) || ''
+      client: {
+        name: buyer.name || buyer.nome || '',
+        email: email,
+        phone: phone,
+        document: document
       },
-      external_id: externalId
+      products: [{
+        id: 'rifa-donna-gina',
+        name: p.description || 'Rifa Donna Gina Moda Plus',
+        quantity: 1,
+        price: amount
+      }]
     };
 
     try {
       var controller = new AbortController();
-      var timer = setTimeout(function () { controller.abort(); }, 15000);
+      var timer = setTimeout(function () { controller.abort(); }, 20000);
       var resp;
       try {
         resp = await fetch(cfg.endpoint, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + cfg.apiKey,
-            'x-api-key': cfg.apiKey
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body),
           signal: controller.signal
         });
@@ -160,19 +165,22 @@
 
       var json = null;
       try { json = await resp.json(); } catch (e) { json = null; }
-
-      if (!resp.ok) {
-        return { ok: false, demo: false, message: 'Gateway indisponível, finalize pelo WhatsApp' };
+      var pix = json && json.pix;
+      var pixCode = pix && (pix.code || pix.pixCode);
+      if (pixCode) {
+        return {
+          ok: true,
+          demo: false,
+          id: json.transactionId || externalId,
+          pixCode: pixCode,
+          qrCode: pix.image || null,
+          message: 'Pix criado.'
+        };
       }
-      var norm = normalizeResponse(json, cfg) || normalizeResponse(json && json.data, cfg);
-      if (!norm) {
-        return { ok: false, demo: false, message: 'Gateway indisponível, finalize pelo WhatsApp' };
-      }
-      norm.message = 'Pix criado.';
-      return norm;
+      var apiMsg = (json && (json.message || json.error)) || 'Não foi possível gerar o Pix.';
+      return { ok: false, demo: false, message: String(apiMsg).trim() };
     } catch (err) {
-      // Timeout, rede ou resposta inválida: fallback gracioso sem quebrar o site.
-      return { ok: false, demo: false, message: 'Gateway indisponível, finalize pelo WhatsApp' };
+      return { ok: false, demo: false, message: 'Não foi possível falar com a SigiloPay. Tente de novo.' };
     }
   }
 

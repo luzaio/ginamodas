@@ -89,11 +89,13 @@
     if (!erro) return;
     if (!mensagem) {
       erro.textContent = '';
+      erro.classList.add('hidden');
       erro.style.display = 'none';
       erro.removeAttribute('role');
       return;
     }
     erro.textContent = mensagem;
+    erro.classList.remove('hidden');
     erro.style.display = 'block';
     erro.setAttribute('role', 'alert');
   }
@@ -279,7 +281,6 @@
     var pixCode = dados && (dados.pixCode || dados.pixCopiaECola || '');
     var qrCode = dados && dados.qrCode;
     var checkoutUrl = dados && (dados.checkoutUrl || dados.url);
-    var demo = !!(dados && dados.demo);
 
     // Mostra o bloco de resultado.
     if (resultado) resultado.style.display = 'block';
@@ -308,19 +309,8 @@
       }
     }
 
-    // Mensagem de demonstração (quando a API retornou demo sem QR real).
     var msgDemo = document.getElementById('pix-demo-msg');
-    if (demo && !qrCode) {
-      if (!msgDemo) {
-        msgDemo = document.createElement('p');
-        msgDemo.id = 'pix-demo-msg';
-        dadooAppend(resultado, msgDemo);
-      }
-      msgDemo.textContent = 'Modo demonstração — configure sua chave SigiloPay em js/config.js';
-      msgDemo.style.display = 'block';
-    } else if (msgDemo) {
-      msgDemo.style.display = 'none';
-    }
+    if (msgDemo) msgDemo.style.display = 'none';
 
     // Link/botão secundário para o checkout SigiloPay (se vier URL).
     var btnCheckout = document.getElementById('btn-open-sigilopay');
@@ -399,6 +389,7 @@
     var telefone = ($('#buyer-phone') || {}).value || '';
     var email = ($('#buyer-email') || {}).value || '';
 
+    var documento = (($('#buyer-document') || {}).value || '').replace(/\D/g, '');
     nome = nome.trim();
     telefone = telefone.replace(/\D/g, '');
     email = email.trim();
@@ -415,6 +406,12 @@
       $('#buyer-phone') && $('#buyer-phone').focus();
       return null;
     }
+    if (!cpfValido(documento)) {
+      mostrarErro('Informe um CPF válido. A SigiloPay exige o documento para gerar o Pix.');
+      mostrarToast('CPF inválido.', 'error');
+      $('#buyer-document') && $('#buyer-document').focus();
+      return null;
+    }
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
       mostrarErro('Informe um e-mail válido ou deixe o campo vazio.');
       mostrarToast('E-mail inválido.', 'error');
@@ -423,7 +420,22 @@
     }
 
     mostrarErro('');
-    return { nome: nome, telefone: telefone, email: email };
+    return { nome: nome, telefone: telefone, email: email, documento: documento };
+  }
+
+  function cpfValido(cpf) {
+    if (!/^\d{11}$/.test(cpf) || /^(\d)\1{10}$/.test(cpf)) return false;
+    var nums = cpf.split('').map(Number);
+    var soma = 0;
+    for (var i = 0; i < 9; i++) soma += nums[i] * (10 - i);
+    var d1 = (soma * 10) % 11;
+    if (d1 === 10) d1 = 0;
+    if (d1 !== nums[9]) return false;
+    soma = 0;
+    for (var j = 0; j < 10; j++) soma += nums[j] * (11 - j);
+    var d2 = (soma * 10) % 11;
+    if (d2 === 10) d2 = 0;
+    return d2 === nums[10];
   }
 
   // ---------------------------------------------------------------------------
@@ -459,7 +471,7 @@
       });
 
       if (!resposta || resposta.ok === false || (!resposta.pixCode && !resposta.checkoutUrl)) {
-        var motivo = (resposta && (resposta.erro || resposta.error)) || 'Não foi possível gerar o Pix. Tente novamente.';
+        var motivo = (resposta && (resposta.message || resposta.erro || resposta.error)) || 'Não foi possível gerar o Pix. Tente novamente.';
         mostrarErro(motivo);
         mostrarToast(motivo, 'error');
         return;
