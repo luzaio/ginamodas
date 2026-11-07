@@ -321,7 +321,7 @@
         btnCheckout.className = 'btn btn-secundario';
         btnCheckout.target = '_blank';
         btnCheckout.rel = 'noopener';
-        btnCheckout.textContent = 'Abrir checkout SigiloPay';
+        btnCheckout.textContent = 'Abrir pagamento';
         dadooAppend(resultado, btnCheckout);
       }
       btnCheckout.href = checkoutUrl;
@@ -407,7 +407,7 @@
       return null;
     }
     if (!cpfValido(documento)) {
-      mostrarErro('Informe um CPF válido. A Oasy.fy exige o documento para gerar o Pix.');
+      mostrarErro('Informe um CPF válido.');
       mostrarToast('CPF inválido.', 'error');
       $('#buyer-document') && $('#buyer-document').focus();
       return null;
