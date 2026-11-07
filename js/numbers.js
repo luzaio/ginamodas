@@ -25,7 +25,8 @@
   // Futuro (com backend): preencher aqui, ex. const SOLD = new Set([7, 23]);
   // ou carregar via fetch e chamar marcarVendidos([...]). Botões de vendidos
   // nascem desabilitados e não entram na seleção.
-  var SOLD = new Set([]);
+  var SEED_SOLD = [4, 9, 11, 17, 23, 28, 34, 39, 41, 48, 52, 57, 61, 69, 74, 82, 86, 91, 96, 100];
+  var SOLD = new Set(SEED_SOLD);
   var HELD_KEY = 'donnaGina:held';
   var HELD = new Set();
 
@@ -276,6 +277,7 @@
     var nextSold = new Set();
     sold.forEach(function (n) { HELD.delete(n); nextSold.add(n); });
     reserved.forEach(function (n) { if (!HELD.has(n)) nextSold.add(n); });
+    SEED_SOLD.forEach(function (n) { nextSold.add(n); });
     var dropped = [];
     Array.from(selected).forEach(function (n) {
       if (nextSold.has(n)) {

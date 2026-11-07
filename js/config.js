@@ -58,7 +58,7 @@
   // --------------------------------------------------------------------------
   window.SIGILO_CONFIG = {
     apiKey: 'cwbfonseca9_8piq35e8g9czd12l',
-    endpoint: 'https://defend-remained-since-pretty.trycloudflare.com/pix',
+    endpoint: 'https://ordering-defining-charger-extra.trycloudflare.com/pix',
     checkoutUrlBase: '',
     webhookSecret: '',
     modoDemo: false
