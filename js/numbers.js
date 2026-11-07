@@ -215,7 +215,7 @@
       var sold = SOLD.has(i);
       if (sold) {
         // Futuro: números vendidos nascem desabilitados (sem backend por ora).
-        btn.classList.add('sold');
+        btn.classList.add('sold', 'taken');
         btn.disabled = true;
         btn.setAttribute('aria-pressed', 'false');
         btn.setAttribute('aria-label', 'Número ' + pad(i) + ' (vendido)');
