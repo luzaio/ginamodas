@@ -466,6 +466,7 @@
     try {
       var resposta = await window.SigiloPay.createPix({
         amount: resumo.total,
+        numbers: resumo.numeros,
         buyer: buyer,
         description: 'Rifa Donna Gina - números ' + resumo.numeros.join(','),
       });
@@ -474,6 +475,7 @@
         var motivo = (resposta && (resposta.message || resposta.erro || resposta.error)) || 'Não foi possível gerar o Pix. Tente novamente.';
         mostrarErro(motivo);
         mostrarToast(motivo, 'error');
+        if (window.Rifa && typeof window.Rifa.refresh === 'function') window.Rifa.refresh();
         return;
       }
 

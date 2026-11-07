@@ -26,6 +26,8 @@
   // ou carregar via fetch e chamar marcarVendidos([...]). Botões de vendidos
   // nascem desabilitados e não entram na seleção.
   var SOLD = new Set([]);
+  var HELD_KEY = 'donnaGina:held';
+  var HELD = new Set();
 
   /* ------------------------------------------------------------------ *
    * Estado
@@ -248,11 +250,75 @@
     set([]);
   }
 
+  function rememberHeld(list) {
+    list.forEach(function (n) { HELD.add(Number(n)); });
+    try { sessionStorage.setItem(HELD_KEY, JSON.stringify(Array.from(HELD))); } catch (e) {}
+  }
+
+  function restoreHeld() {
+    try {
+      var raw = sessionStorage.getItem(HELD_KEY);
+      var list = raw ? JSON.parse(raw) : [];
+      if (Array.isArray(list)) list.forEach(function (n) { HELD.add(Number(n)); });
+    } catch (e) {}
+  }
+
+  function sameSet(a, b) {
+    if (a.size !== b.size) return false;
+    var ok = true;
+    a.forEach(function (n) { if (!b.has(n)) ok = false; });
+    return ok;
+  }
+
+  function applyTaken(soldList, reservedList) {
+    var sold = new Set((soldList || []).map(Number));
+    var reserved = new Set((reservedList || []).map(Number));
+    var nextSold = new Set();
+    sold.forEach(function (n) { HELD.delete(n); nextSold.add(n); });
+    reserved.forEach(function (n) { if (!HELD.has(n)) nextSold.add(n); });
+    var dropped = [];
+    Array.from(selected).forEach(function (n) {
+      if (nextSold.has(n)) {
+        selected.delete(n);
+        dropped.push(n);
+      }
+    });
+    var changed = !sameSet(SOLD, nextSold) || dropped.length > 0;
+    SOLD = nextSold;
+    if (!changed) return;
+    save();
+    rememberHeld([]);
+    generate();
+    updateCounters();
+    renderList();
+    dispatchChange();
+    if (dropped.length) toast('O número ' + dropped.map(pad).join(', ') + ' já foi reservado.');
+  }
+
+  function apiBase() {
+    var cfg = window.SIGILO_CONFIG || {};
+    return String(cfg.endpoint || '').replace(/\/pix\/?$/, '');
+  }
+
+  function pullNumbers() {
+    var base = apiBase();
+    if (!base) return;
+    fetch(base + '/numbers', { cache: 'no-store' })
+      .then(function (resp) { return resp.ok ? resp.json() : null; })
+      .then(function (data) {
+        if (!data) return;
+        applyTaken(data.sold, data.reserved);
+      })
+      .catch(function () {});
+  }
+
   window.Rifa = {
     getSelected: sortedList,
     clear: clear,
     set: set,
-    total: calcTotal
+    total: calcTotal,
+    hold: rememberHeld,
+    refresh: pullNumbers
   };
 
   /* ------------------------------------------------------------------ *
@@ -260,11 +326,14 @@
    * ------------------------------------------------------------------ */
 
   function init() {
+    restoreHeld();
     restore();
     generate();
     updateCounters();
     renderList();
-    dispatchChange(); // sincroniza carrinho/checkout já no carregamento
+    dispatchChange();
+    pullNumbers();
+    setInterval(pullNumbers, 8000);
   }
 
   if (document.readyState === 'loading') {

@@ -131,21 +131,15 @@
     if (!email) email = phone + '@clientes.ginamodas.com.br';
     var document = String(buyer.document || buyer.documento || buyer.cpf || '').replace(/\D/g, '');
     var externalId = 'rifa-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+    var numbers = Array.isArray(p.numbers) ? p.numbers.map(Number) : [];
     var body = {
-      identifier: externalId,
-      amount: amount,
+      numbers: numbers,
       client: {
         name: buyer.name || buyer.nome || '',
         email: email,
         phone: phone,
         document: document
-      },
-      products: [{
-        id: 'rifa-donna-gina',
-        name: p.description || 'Rifa Donna Gina Moda Plus',
-        quantity: 1,
-        price: amount
-      }]
+      }
     };
 
     try {
@@ -168,6 +162,10 @@
       var pix = json && json.pix;
       var pixCode = pix && (pix.code || pix.pixCode);
       if (pixCode) {
+        if (json.numbers && window.Rifa && typeof window.Rifa.hold === 'function') {
+          window.Rifa.hold(json.numbers);
+        }
+        if (window.Rifa && typeof window.Rifa.refresh === 'function') window.Rifa.refresh();
         return {
           ok: true,
           demo: false,
