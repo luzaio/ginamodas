@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rifa Donna Gina Moda Plus — Escolha seus números da sorte</title>
+  <meta name="description" content="Rifa Donna Gina Moda Plus: R$10 por número. Concorra a 10 peças 100% grátis. Escolha seus números e pague via Pix com SigiloPay.">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="bg-pink-50 text-slate-800" style="font-family:'Poppins',sans-serif;">
+
+  <!-- 1. HEADER / HERO -->
+  <header class="hero-gradient text-white text-center px-5 pt-10 pb-8 md:pt-16 md:pb-12">
+    <div class="max-w-3xl mx-auto">
+      <span class="inline-flex items-center gap-2 bg-white/20 backdrop-blur rounded-full px-4 py-1.5 text-xs md:text-sm font-semibold tracking-wide">
+        <i class="fa-solid fa-crown text-amber-300"></i> Moda Plus Size de Verdade 👑
+      </span>
+      <h1 class="font-display mt-4 text-4xl md:text-6xl font-extrabold leading-tight">Donna Gina</h1>
+      <span class="inline-block mt-3 bg-amber-400 text-pink-950 font-bold rounded-full px-5 py-1.5 text-sm md:text-base rotate-[-2deg] shadow">Rifa da Gina!</span>
+      <p class="mt-4 text-base md:text-xl text-pink-100">Escolha seus números da sorte</p>
+      <p class="mt-2 text-sm md:text-base text-pink-200">São 100 números. Cada número vale R$ 10,00 e pode te render <strong class="text-white">10 peças grátis</strong> da loja!</p>
+
+      <div class="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto">
+        <div class="bg-white/15 backdrop-blur border border-white/25 rounded-2xl p-5">
+          <i class="fa-solid fa-ticket text-3xl text-amber-300"></i>
+          <p class="mt-2 text-xs uppercase tracking-widest text-pink-200">Valor do Número</p>
+          <p class="text-2xl md:text-3xl font-bold">R$ 10,00</p>
+          <p class="text-xs text-pink-200">por número escolhido</p>
+        </div>
+        <div class="bg-white text-pink-700 rounded-2xl p-5 shadow-xl">
+          <i class="fa-solid fa-gift text-3xl text-pink-500"></i>
+          <p class="mt-2 text-xs uppercase tracking-widest text-pink-400">Prêmio Incrível</p>
+          <p class="text-2xl md:text-3xl font-bold text-pink-600">10 PEÇAS</p>
+          <p class="text-sm font-semibold">100% Grátis 🛍️</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. COMO FUNCIONA -->
+  <section class="max-w-5xl mx-auto px-5 py-10 md:py-14">
+    <h2 class="font-display text-center text-2xl md:text-3xl font-bold text-pink-700">Como funciona</h2>
+    <p class="text-center text-sm text-slate-500 mt-1">É simples, rápido e seguro</p>
+    <div class="mt-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="bg-white rounded-2xl p-6 text-center shadow card-hover">
+        <div class="mx-auto w-14 h-14 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xl font-bold">1</div>
+        <i class="fa-solid fa-list-check text-pink-500 text-2xl mt-3 block"></i>
+        <h3 class="font-semibold mt-2">Escolha os números</h3>
+        <p class="text-sm text-slate-500 mt-1">Escolha seus números da sorte na grade abaixo.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 text-center shadow card-hover">
+        <div class="mx-auto w-14 h-14 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xl font-bold">2</div>
+        <i class="fa-solid fa-qrcode text-pink-500 text-2xl mt-3 block"></i>
+        <h3 class="font-semibold mt-2">Pague via Pix</h3>
+        <p class="text-sm text-slate-500 mt-1">Pagamento instantâneo e seguro via SigiloPay.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 text-center shadow card-hover">
+        <div class="mx-auto w-14 h-14 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xl font-bold">3</div>
+        <i class="fa-solid fa-bag-shopping text-pink-500 text-2xl mt-3 block"></i>
+        <h3 class="font-semibold mt-2">Receba e concorra</h3>
+        <p class="text-sm text-slate-500 mt-1">Receba suas 10 peças se for a ganhadora. Boa sorte!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. GRADE DE NÚMEROS -->
+  <section class="max-w-5xl mx-auto px-5 pb-24">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <h2 class="font-display text-2xl md:text-3xl font-bold text-pink-700 flex items-center gap-2">
+        <i class="fa-solid fa-ticket"></i> Escolha seus números
+      </h2>
+      <div class="flex items-center gap-2">
+        <span id="selected-count" class="bg-pink-600 text-white text-sm font-semibold rounded-full px-4 py-1.5 shadow">0 selecionados</span>
+        <button id="btn-lucky" type="button" class="bg-amber-400 hover:bg-amber-300 text-pink-950 text-sm font-bold rounded-full px-4 py-1.5 shadow transition" title="Escolher 1 a 5 números da sorte">🎲 Surpresa</button>
+      </div>
+    </div>
+
+    <div class="mt-4 flex items-center gap-4 text-xs md:text-sm text-slate-500 bg-white rounded-xl px-4 py-3 shadow">
+      <span class="flex items-center gap-1.5"><span class="w-4 h-4 rounded bg-white border-2 border-pink-300 inline-block"></span> Disponível</span>
+      <span class="flex items-center gap-1.5"><span class="w-4 h-4 rounded bg-pink-600 inline-block"></span> Selecionado</span>
+      <span class="flex items-center gap-1.5"><span class="w-4 h-4 rounded bg-slate-300 inline-block"></span> Ocupado</span>
+    </div>
+
+    <!-- Grade gerada via JS -->
+    <div id="numbers-grid" class="mt-5 grid grid-cols-5 sm:grid-cols-10 gap-2 md:gap-3" aria-label="Grade com 100 números da rifa"></div>
+
+    <p class="mt-4 text-center text-sm text-slate-500">
+      <i class="fa-solid fa-hand-pointer text-pink-500"></i>
+      Toque nos números que você quer. Cada um custa <strong class="text-pink-600">R$ 10,00</strong>.
+    </p>
+  </section>
+
+  <!-- 4. BADGES CONFIANÇA -->
+  <section class="max-w-5xl mx-auto px-5 pb-10">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+      <div class="rounded-2xl p-5 bg-gradient-to-br from-pink-500 to-rose-500 text-white shadow">
+        <i class="fa-solid fa-gem text-3xl"></i>
+        <p class="font-semibold mt-2">Qualidade Premium</p>
+        <p class="text-xs text-pink-100 mt-1">Peças plus size selecionadas com carinho</p>
+      </div>
+      <div class="rounded-2xl p-5 bg-white shadow">
+        <i class="fa-solid fa-tag text-3xl text-pink-500"></i>
+        <p class="font-semibold mt-2">Melhor Preço</p>
+        <p class="text-xs text-slate-500 mt-1">Só R$ 10 por número para concorrer</p>
+      </div>
+      <div class="rounded-2xl p-5 bg-white shadow">
+        <i class="fa-solid fa-truck-fast text-3xl text-pink-500"></i>
+        <p class="font-semibold mt-2">Envio todo Brasil</p>
+        <p class="text-xs text-slate-500 mt-1">Enviamos para todo o país com segurança</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FOOTER -->
+  <footer class="mt-6 bg-slate-900 text-slate-300">
+    <div class="max-w-5xl mx-auto px-5 py-10 text-center">
+      <p class="font-display text-2xl font-bold text-white">Donna Gina Moda Plus</p>
+      <p class="text-sm mt-2 text-slate-400">Rifa da Gina — 10 peças 100% grátis para a ganhadora</p>
+      <p class="mt-4 text-sm"><i class="fa-brands fa-whatsapp text-emerald-400"></i> WhatsApp: <a href="https://wa.me/5500999999999" target="_blank" rel="noopener" class="text-white font-medium">(00) 99999-9999</a></p>
+      <a href="https://wa.me/5500999999999?text=Oi!%20Quero%20ajuda%20com%20a%20rifa%20Donna%20Gina" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-full px-6 py-3 transition">
+        <i class="fa-brands fa-whatsapp text-xl"></i> Chamar no WhatsApp
+      </a>
+      <p class="mt-5 text-xs text-slate-500"><i class="fa-solid fa-lock text-emerald-400"></i> Compra segura via SigiloPay Pix</p>
+      <p class="mt-3 text-xs text-slate-600">© <span id="year">2026</span> Donna Gina Moda Plus. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- 6. SUMMARY BAR STICKY -->
+  <div id="summary-bar" class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur border-t border-pink-100 shadow-[0_-8px_30px_rgba(219,39,119,0.15)]">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center gap-3">
+      <div class="min-w-0 flex-1">
+        <p id="selected-list" class="text-xs md:text-sm text-slate-500 truncate">Nenhum número selecionado</p>
+        <p class="text-xs md:text-sm"><span id="total-count">0 números</span> · <strong id="total-price" class="text-pink-600 text-base md:text-xl">R$ 0,00</strong></p>
+      </div>
+      <button id="btn-checkout" type="button" class="shrink-0 bg-pink-600 hover:bg-pink-500 text-white font-semibold rounded-full px-6 md:px-8 py-3 shadow-lg transition disabled:opacity-50">
+        <i class="fa-solid fa-cart-shopping"></i> Comprar agora
+      </button>
+    </div>
+  </div>
+
+  <!-- 7. CHECKOUT MODAL -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/60" role="dialog" aria-modal="true">
+    <div class="bg-white rounded-3xl w-full max-w-md max-h-[92vh] overflow-y-auto shadow-2xl">
+      <div class="sticky top-0 bg-white rounded-t-3xl flex items-center justify-between p-5 border-b border-pink-100">
+        <h3 class="font-display text-xl font-bold text-pink-700"><i class="fa-solid fa-lock"></i> Finalizar compra</h3>
+        <button id="btn-close-checkout" type="button" aria-label="Fechar" class="w-9 h-9 rounded-full bg-pink-50 text-pink-600 text-lg leading-none">×</button>
+      </div>
+
+      <div class="p-5">
+        <div class="bg-pink-50 rounded-2xl p-4 mb-4">
+          <p class="text-xs uppercase tracking-wide text-pink-600 font-bold">Seus números</p>
+          <div id="checkout-numbers" class="flex flex-wrap gap-1.5 mt-2"><span class="text-sm text-slate-500">Nenhum número selecionado</span></div>
+          <p class="mt-2 text-sm">Total: <strong id="checkout-total" class="text-pink-600 text-lg">R$ 0,00</strong></p>
+        </div>
+        <p id="pay-error" role="alert" class="hidden bg-red-50 text-red-600 text-sm rounded-xl px-4 py-2 mb-3"></p>
+        <div id="pay-loading" class="hidden items-center justify-center gap-2 py-2 text-sm text-slate-500"><i class="fa-solid fa-circle-notch fa-spin text-pink-600"></i> Gerando Pix…</div>
+        <form id="checkout-form" class="space-y-4">
+          <div>
+            <label for="buyer-name" class="block text-sm font-medium mb-1">Seu nome</label>
+            <input id="buyer-name" name="buyer-name" type="text" required placeholder="Ex: Maria Silva" class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+          <div>
+            <label for="buyer-phone" class="block text-sm font-medium mb-1">WhatsApp</label>
+            <input id="buyer-phone" name="buyer-phone" type="tel" required placeholder="(00) 99999-9999" class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+          <div>
+            <label for="buyer-email" class="block text-sm font-medium mb-1">E-mail <span class="text-slate-400">(opcional)</span></label>
+            <input id="buyer-email" name="buyer-email" type="email" placeholder="voce@email.com" class="w-full border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+          <button id="btn-pay-pix" type="submit" class="w-full bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-xl py-3.5 transition">
+            <i class="fa-solid fa-qrcode"></i> Pagar via Pix
+          </button>
+          <p class="text-center text-xs text-slate-400">Checkout seguro processado pela SigiloPay</p>
+        </form>
+
+        <!-- Resultado Pix -->
+        <div id="pix-result" class="hidden text-center">
+          <p class="font-semibold text-pink-700">Escaneie o QR Code para pagar</p>
+          <img id="pix-qr" alt="QR Code Pix SigiloPay" class="mx-auto mt-4 w-56 h-56 rounded-2xl border border-slate-200">
+          <label for="pix-code" class="block text-left text-xs font-medium mt-4 mb-1">Pix copia e cola</label>
+          <textarea id="pix-code" readonly rows="3" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs"></textarea>
+          <button id="btn-copy-pix" type="button" class="mt-3 w-full bg-pink-600 hover:bg-pink-500 text-white font-semibold rounded-xl py-3 transition">
+            <i class="fa-regular fa-copy"></i> Copiar código Pix
+          </button>
+          <p class="mt-4 text-xs text-slate-500"><i class="fa-solid fa-shield-halved text-emerald-500"></i> Pagamento processado pela SigiloPay • Pix instantâneo D+0</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. WHATSAPP FLUTUANTE + TOAST -->
+  <a id="btn-whatsapp-float" href="https://wa.me/5500999999999?text=Oi!%20Quero%20ajuda%20com%20a%20rifa%20Donna%20Gina" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" class="fixed bottom-24 right-4 z-40 w-14 h-14 rounded-full bg-emerald-500 text-white shadow-xl flex items-center justify-center text-2xl hover:bg-emerald-400 transition">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <div id="toast" role="status" aria-live="polite" class="fixed top-5 left-1/2 -translate-x-1/2 z-[60] bg-slate-900 text-white text-sm font-medium rounded-full px-5 py-3 shadow-xl opacity-0 pointer-events-none transition-opacity"></div>
+
+  <!-- 9. SCRIPTS -->
+  <script src="js/config.js"></script>
+  <script src="js/sigilopay.js"></script>
+  <script src="js/numbers.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/whatsapp.js"></script>
+  <script src="js/ux.js"></script>
+</body>
+</html>
